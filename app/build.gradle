@@ -10,6 +10,7 @@ jacoco {
     toolVersion = '0.8.8'
 }
 
+// To make Jacoco work with Robolectric
 tasks.withType(Test) {
     jacoco.includeNoLocationClasses = true
     jacoco.excludes = ['jdk.internal.*']
@@ -105,6 +106,8 @@ dependencies {
     androidTestUtil 'androidx.test:orchestrator:1.4.2'
 }
 
+// This will generate gradle task that run instrumented and unit tests and generate code coverage report for variants in your project
+// If you want to use for pure Kotlin/Java project you should probably remove stuff related to connectedTestTask.
 project.afterEvaluate {
     android.applicationVariants.all { variant ->
         def variantName = variant.name
@@ -120,6 +123,8 @@ project.afterEvaluate {
                 xml.enabled true
             }
 
+            // Here we exclude stuff we don't want to show coverage for
+            // Add your own..
             def fileFilter = [
                     // data binding
                     'android/databinding/**/*.class',
@@ -134,9 +139,6 @@ project.afterEvaluate {
                     '**/Manifest*.*',
                     '**/*Test*.*',
                     'android/**/*.*',
-                    // hilt
-                    '**/*GeneratedInjector.*',
-                    'dagger/hilt/**',
                     // kotlin
                     '**/*$*.*',
                     '**/*MapperImpl*.*',
@@ -151,6 +153,8 @@ project.afterEvaluate {
                     '**/*Module*.*',
                     '**/*Dagger*.*',
                     '**/*Hilt*.*',
+                    '**/*GeneratedInjector.*',
+                    'dagger/hilt/**',
                     '**/*MembersInjector*.*',
                     '**/*_MembersInjector.class',
                     '**/*_Factory*.*',
@@ -163,6 +167,10 @@ project.afterEvaluate {
                     '**/*JsonAdapter.*',
             ]
 
+            // Here we use the asm_instrumented_project_classes so we get coverage from classes annotated with @AndroidEntryPoint
+            // See this bug for more info: https://issuetracker.google.com/issues/161300933
+            // If you want to use this code in a pure Kotlin/Java project or an Android project/module not using Hilt, you should
+            // include the two disabled lines and remove the asm_instrumented_project_classes line.
             classDirectories.setFrom(files([
 //                    fileTree(dir: variant.javaCompiler.destinationDir, excludes: fileFilter),
 //                    fileTree(dir: "${buildDir}/tmp/kotlin-classes/${variantName}", excludes: fileFilter)
