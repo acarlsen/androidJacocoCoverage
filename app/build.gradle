@@ -167,15 +167,20 @@ project.afterEvaluate {
                     '**/*JsonAdapter.*',
             ]
 
-            // Here we use the asm_instrumented_project_classes so we get coverage from classes annotated with @AndroidEntryPoint
+            // Here we use asm_instrumented_project_classes so we get coverage from classes annotated with @AndroidEntryPoint
+            // To generate report in project where the asm_instrumented_project_classes folder is not created
+            // use -PignoreAsmInstrumentedClasses=true on the command line.
             // See this bug for more info: https://issuetracker.google.com/issues/161300933
-            // If you want to use this code in a pure Kotlin/Java project or an Android project/module not using Hilt, you should
-            // include the two disabled lines and remove the asm_instrumented_project_classes line.
-            classDirectories.setFrom(files([
-//                    fileTree(dir: variant.javaCompiler.destinationDir, excludes: fileFilter),
-//                    fileTree(dir: "${buildDir}/tmp/kotlin-classes/${variantName}", excludes: fileFilter)
-                    fileTree(dir: "${buildDir}/intermediates/asm_instrumented_project_classes/${variantName}", excludes: fileFilter)
-            ]))
+            if (project.hasProperty("ignoreAsmInstrumentedClasses")) {
+                classDirectories.setFrom(files([
+                        fileTree(dir: variant.javaCompiler.destinationDir, excludes: fileFilter),
+                        fileTree(dir: "${buildDir}/tmp/kotlin-classes/${variantName}", excludes: fileFilter)
+                ]))
+            } else {
+                classDirectories.setFrom(files([
+                        fileTree(dir: "${buildDir}/intermediates/asm_instrumented_project_classes/${variantName}", excludes: fileFilter)
+                ]))
+            }
             sourceDirectories.setFrom(files([
                     "$project.projectDir/src/main/java",
                     "$project.projectDir/src/${variantName}/java",
