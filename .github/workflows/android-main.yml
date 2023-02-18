@@ -34,9 +34,7 @@ jobs:
       - name: "Run Lint"
         run: ./gradlew lint
       - name: "Run Detekt"
-        uses: natiginfo/action-detekt-all@1.22.0-RC1
-        with:
-          args: --fail-fast --config detekt/detekt.yml
+        run: ./gradlew detekt
       - name: "Run tests"
         run: ./gradlew testDebugUnitTest
       - name: "Test Summary"
