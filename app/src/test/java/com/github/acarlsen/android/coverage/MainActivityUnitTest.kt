@@ -3,8 +3,8 @@ package com.github.acarlsen.android.coverage
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import com.github.acarlsen.android.coverage.ui.screen.HomeScreenComposable
-import com.github.acarlsen.android.coverage.ui.screen.HomeUiState
+import com.github.acarlsen.android.coverage.ui.screen.home.HomeScreenComposable
+import com.github.acarlsen.android.coverage.ui.screen.home.HomeUiState
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

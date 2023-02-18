@@ -1,4 +1,4 @@
-package com.github.acarlsen.android.coverage.ui.screen
+package com.github.acarlsen.android.coverage.ui.screen.cocktail
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

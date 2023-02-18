@@ -1,4 +1,4 @@
-package com.github.acarlsen.android.coverage.util
+package com.github.acarlsen.android.coverage.domain.repositories
 
 object GreetingGenerator {
     private val greetings = listOf(

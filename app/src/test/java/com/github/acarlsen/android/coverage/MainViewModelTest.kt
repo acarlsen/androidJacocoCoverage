@@ -1,6 +1,6 @@
 package com.github.acarlsen.android.coverage
 
-import com.github.acarlsen.android.coverage.ui.screen.HomeViewModel
+import com.github.acarlsen.android.coverage.ui.screen.home.HomeViewModel
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 

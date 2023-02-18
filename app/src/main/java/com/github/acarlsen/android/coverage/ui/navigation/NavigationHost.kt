@@ -1,3 +1,5 @@
+package com.github.acarlsen.android.coverage.ui.navigation
+
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Dashboard
@@ -9,9 +11,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.github.acarlsen.android.coverage.R
-import com.github.acarlsen.android.coverage.ui.screen.CocktailScreen
-import com.github.acarlsen.android.coverage.ui.screen.HomeScreen
-import com.github.acarlsen.android.coverage.ui.screen.InfoScreen
+import com.github.acarlsen.android.coverage.ui.screen.cocktail.CocktailScreen
+import com.github.acarlsen.android.coverage.ui.screen.home.HomeScreen
+import com.github.acarlsen.android.coverage.ui.screen.info.InfoScreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 

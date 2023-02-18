@@ -1,7 +1,7 @@
-package com.github.acarlsen.android.coverage.ui.screen
+package com.github.acarlsen.android.coverage.ui.screen.home
 
 import androidx.lifecycle.ViewModel
-import com.github.acarlsen.android.coverage.util.GreetingGenerator
+import com.github.acarlsen.android.coverage.domain.repositories.GreetingGenerator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
