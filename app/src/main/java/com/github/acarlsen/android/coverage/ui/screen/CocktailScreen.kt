@@ -19,6 +19,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.github.acarlsen.android.coverage.domain.models.CocktailModel
 import com.github.acarlsen.android.coverage.ui.theme.AndroidJacocoCoverageTheme
+import com.github.acarlsen.android.coverage.ui.util.ViewModelUiState
 
 @Composable
 fun CocktailScreen(
@@ -32,7 +33,7 @@ fun CocktailScreen(
 }
 
 @Composable
-fun CocktailScreenComposable(uiState: CocktailUiState, clickNewCocktail: () -> Unit) {
+fun CocktailScreenComposable(uiState: ViewModelUiState<CocktailModel>, clickNewCocktail: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -40,7 +41,7 @@ fun CocktailScreenComposable(uiState: CocktailUiState, clickNewCocktail: () -> U
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         when (uiState) {
-            is Error -> {
+            is ViewModelUiState.Error -> {
                 Text(text = "Error", style = MaterialTheme.typography.titleMedium)
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = uiState.message)
@@ -50,15 +51,15 @@ fun CocktailScreenComposable(uiState: CocktailUiState, clickNewCocktail: () -> U
                 }
             }
 
-            is Loading -> {
+            is ViewModelUiState.Loading -> {
                 Text(text = "Loading", style = MaterialTheme.typography.titleMedium)
             }
 
-            is Success -> {
-                Text(text = uiState.cocktail.name, style = MaterialTheme.typography.titleMedium)
+            is ViewModelUiState.Success -> {
+                Text(text = uiState.value.name, style = MaterialTheme.typography.titleMedium)
                 Spacer(modifier = Modifier.height(16.dp))
-                Text(text = uiState.cocktail.instructions)
-                uiState.cocktail.image?.let { image ->
+                Text(text = uiState.value.instructions)
+                uiState.value.image?.let { image ->
                     Spacer(modifier = Modifier.height(16.dp))
                     AsyncImage(
                         modifier = Modifier.height(100.dp),
@@ -80,8 +81,8 @@ fun CocktailScreenComposable(uiState: CocktailUiState, clickNewCocktail: () -> U
 fun CocktailScreenComposablePreview() {
     AndroidJacocoCoverageTheme {
         CocktailScreenComposable(
-            uiState = Success(
-                cocktail = CocktailModel(
+            uiState = ViewModelUiState.Success(
+                CocktailModel(
                     id = "2",
                     name = "Margarita",
                     instructions = "Rub the rim of the glass with the lime slice to make " +
