@@ -1,0 +1,23 @@
+style:
+  MaxLineLength:
+    active: true
+    maxLineLength: 140
+
+  UnusedPrivateMember:
+    active: true
+    ignoreAnnotated: ['Preview']
+
+  MagicNumber:
+    active: true
+    ignorePropertyDeclaration: true
+    ignoreCompanionObjectPropertyDeclaration: true
+
+naming:
+  FunctionNaming:
+    active: true
+    functionPattern: '^([a-zA-Z$][a-zA-Z$0-9]*)|(`.*`)$'
+    ignoreAnnotated: ['Composable']
+
+  TopLevelPropertyNaming:
+    active: true
+    constantPattern: '[A-Z][A-Za-z0-9]*'

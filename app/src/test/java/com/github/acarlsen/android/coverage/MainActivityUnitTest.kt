@@ -3,6 +3,8 @@ package com.github.acarlsen.android.coverage
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import com.github.acarlsen.android.coverage.ui.screen.HomeScreenComposable
+import com.github.acarlsen.android.coverage.ui.screen.HomeUiState
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -16,7 +18,8 @@ import org.robolectric.shadows.ShadowLog
     instrumentedPackages = [
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"
-    ])
+    ]
+)
 class MainActivityUnitTest {
 
     @get:Rule
@@ -31,8 +34,8 @@ class MainActivityUnitTest {
     @Test
     fun testInitialState() {
         composeTestRule.setContent {
-            MainScreenComposable(
-                uiState = MainUiState(
+            HomeScreenComposable(
+                uiState = HomeUiState(
                     greeting = "Test greeting"
                 ),
                 toggleGreeting = {}
