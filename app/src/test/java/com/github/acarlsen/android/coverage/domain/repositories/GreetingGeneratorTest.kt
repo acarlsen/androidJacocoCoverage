@@ -1,6 +1,5 @@
-package com.github.acarlsen.android.coverage
+package com.github.acarlsen.android.coverage.domain.repositories
 
-import com.github.acarlsen.android.coverage.domain.repositories.GreetingGenerator
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 

@@ -1,9 +1,8 @@
-package com.github.acarlsen.android.coverage
+package com.github.acarlsen.android.coverage.ui.screen.cocktail
 
 import com.github.acarlsen.android.coverage.domain.models.CocktailModel
 import com.github.acarlsen.android.coverage.domain.repositories.CocktailDBRepo
 import com.github.acarlsen.android.coverage.domain.usecases.GetRandomCocktailUseCase
-import com.github.acarlsen.android.coverage.ui.screen.cocktail.CocktailViewModel
 import com.github.acarlsen.android.coverage.ui.util.ViewModelUiState
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery

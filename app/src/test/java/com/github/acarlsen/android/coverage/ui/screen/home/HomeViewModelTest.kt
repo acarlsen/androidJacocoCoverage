@@ -1,10 +1,9 @@
-package com.github.acarlsen.android.coverage
+package com.github.acarlsen.android.coverage.ui.screen.home
 
-import com.github.acarlsen.android.coverage.ui.screen.home.HomeViewModel
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
-class MainViewModelTest {
+class HomeViewModelTest {
 
     @Test
     fun handleInitialCase_isCorrect() {

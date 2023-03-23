@@ -1,10 +1,8 @@
-package com.github.acarlsen.android.coverage
+package com.github.acarlsen.android.coverage.ui.screen.home
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import com.github.acarlsen.android.coverage.ui.screen.home.HomeScreenComposable
-import com.github.acarlsen.android.coverage.ui.screen.home.HomeUiState
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -20,7 +18,7 @@ import org.robolectric.shadows.ShadowLog
         "androidx.loader.content"
     ]
 )
-class MainActivityUnitTest {
+class HomeScreenUnitTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
